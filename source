@@ -1,0 +1,33 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+void Getupd(char* ctr, int n, FILE* stream);
+
+int main(void) {
+
+	char str[50] = { 0 };
+	
+	Getupd(str, 50, stdin);
+
+	fputs(str, stdout);
+
+}
+
+void Getupd(char* ctr, int n, FILE* stream)
+{
+	int i = 0;
+
+	fflush(stdin);
+
+	fgets(ctr, n, stream);
+
+	while (ctr[i] != '\0') i++;
+
+	if (ctr[i - 1] == '\n') ctr[i - 1] = '\0';
+	else
+	{
+		while (getchar() != '\n') continue;
+	}
+
+	return;
+}
